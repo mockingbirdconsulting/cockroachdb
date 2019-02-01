@@ -13,7 +13,6 @@ provisioner:
   requirements_path: dependencies.yml
 
 platforms:
-  - name: ubuntu-14.04
   - name: centos-7
 
 suites:
