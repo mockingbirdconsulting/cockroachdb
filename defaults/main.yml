@@ -1,2 +1,4 @@
 ---
 # defaults file for cockroachdb
+cockroach_db_version: 2.1.4
+cockroach_db_arch: amd64
