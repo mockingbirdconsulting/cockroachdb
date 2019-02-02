@@ -47,5 +47,5 @@
   systemd:
       name: cockroach
       state: started
-      reload: yes
+      daemon_reload: yes
       enabled: yes
