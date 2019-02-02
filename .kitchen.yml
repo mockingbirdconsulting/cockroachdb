@@ -14,6 +14,9 @@ provisioner:
 
 platforms:
   - name: centos-7
+    drive_config:
+        image: fiercely/centos7:systemd
+        platform: centos
 
 suites:
   # suites found at /test/integration/$test-name
