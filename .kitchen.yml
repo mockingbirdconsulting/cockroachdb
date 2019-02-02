@@ -17,3 +17,8 @@ platforms:
 suites:
   # suites found at /test/integration/$test-name
   - name: default
+
+transport:
+  connection_timeout: 10
+  connection_retries: 5
+  max_ssh_sessions: 1
