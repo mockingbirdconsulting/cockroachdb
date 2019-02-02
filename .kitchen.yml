@@ -13,10 +13,10 @@ provisioner:
   requirements_path: dependencies.yml
 
 platforms:
-  - name: centos-7
-    drive_config:
-        image: fiercely/centos7:systemd
-        platform: centos
+- name: centos-7
+  driver_config:
+      image: "fiercely/centos7:systemd"
+      platform: centos
 
 suites:
   # suites found at /test/integration/$test-name
