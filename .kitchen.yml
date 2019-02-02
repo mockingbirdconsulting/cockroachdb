@@ -1,8 +1,7 @@
 ---
 driver:
   # using docker to test
-  name: docker
-  privileged: true
+  name: ec2
 
 provisioner:
   # use an ansible playbook to provision our server
@@ -14,9 +13,6 @@ provisioner:
 
 platforms:
 - name: centos-7
-  driver_config:
-      image: "fiercely/centos7:systemd"
-      platform: centos
 
 suites:
   # suites found at /test/integration/$test-name
