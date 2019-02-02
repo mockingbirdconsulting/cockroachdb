@@ -5,4 +5,4 @@
 
   roles:
     # name of role to test
-    - role: cockroachdb
+    - role: ansible-cockroachdb
