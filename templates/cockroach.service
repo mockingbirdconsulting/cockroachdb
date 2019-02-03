@@ -7,7 +7,7 @@ Type=simple
 # Another Type option: forking
 User=cockroach
 WorkingDirectory=/opt/cockroach
-ExecStart=/opt/cockroach/bin/cockroach {{ cockroach_db_service_options }}
+ExecStart=/opt/cockroach/bin/cockroach start {{ cockroach_db_service_options }}
 Restart=on-failure
 # Other Restart options: or always, on-abort, etc
 
