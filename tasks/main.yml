@@ -37,3 +37,16 @@
       dest: /opt/cockroach/bin/cockroach
       owner: cockroach
       mode: 0755
+
+- name: Copy the service definition file
+  template:
+      src: cockroach.service
+      dest: /etc/systemd/system/cockroach.service
+      mode: 0664
+
+- name: Ensure that the service is enabled and running
+  systemd:
+      name: cockroach
+      state: started
+      daemon_reload: yes
+      enabled: yes

@@ -1,8 +1,7 @@
 ---
 driver:
   # using docker to test
-  name: docker
-  privileged: true
+  name: ec2
 
 provisioner:
   # use an ansible playbook to provision our server
@@ -13,8 +12,12 @@ provisioner:
   requirements_path: dependencies.yml
 
 platforms:
-  - name: centos-7
+- name: centos
 
 suites:
   # suites found at /test/integration/$test-name
   - name: default
+
+transport:
+  name: ssh
+  max_ssh_sessions: 2
