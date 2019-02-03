@@ -26,7 +26,7 @@ describe 'ansible-cockroachdb::default' do
 
     describe file('/etc/systemd/system/cockroach.service') do
         it { should be_file }
-        it { should be_mode 755 }
+        it { should be_mode 664 }
         it { should be_owned_by 'root' }
     end
 

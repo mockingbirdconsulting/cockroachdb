@@ -42,6 +42,7 @@
   template:
       src: cockroach.service
       dest: /etc/systemd/system/cockroach.service
+      mode: 0664
 
 - name: Ensure that the service is enabled and running
   systemd:
