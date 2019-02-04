@@ -6,7 +6,7 @@
       name: cockroach
       create_home: yes
       home: /opt/cockroach
-      
+
 - name: Create the cockroach group
   group:
       name: cockroach
