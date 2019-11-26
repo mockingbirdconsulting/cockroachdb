@@ -18,7 +18,7 @@
     group: cockroach
     mode: 0755
   loop:
-    - "{{ cockroach_db_path }}
+    - "{{ cockroach_db_path }}"
     - "{{ cockroach_db_path }}/bin"
 
 - name: Download and extract the binary
