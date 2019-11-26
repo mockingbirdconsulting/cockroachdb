@@ -5,7 +5,7 @@
   user:
       name: cockroach
       create_home: yes
-      home: {{ cockroach_db_path }}
+      home: "{{ cockroach_db_path }}"
 
 - name: Create the cockroach group
   group:
@@ -13,13 +13,13 @@
 
 - name: Reset the permissions on the home directory
   file:
-      name: {{ cockroach_db_path }}
+      name: "{{ cockroach_db_path }}"
       mode: 0755
 
 - name: Download and extract the binary
   unarchive:
     src: "https://binaries.cockroachdb.com/cockroach-v{{ cockroach_db_version }}.linux-{{ cockroach_db_arch }}.tgz"
-    dest: {{ cockroach_db_path }}
+    dest: "{{ cockroach_db_path }}"
     remote_src: yes
 
 - name: Create the bin directory
