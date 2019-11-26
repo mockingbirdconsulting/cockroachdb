@@ -4,31 +4,28 @@
 - name: Create the cockroach user
   user:
       name: cockroach
-      create_home: yes
-      home: "{{ cockroach_db_path }}"
+      create_home: no
+      shell: /bin/false
 
 - name: Create the cockroach group
   group:
       name: cockroach
 
-- name: Reset the permissions on the home directory
+- name: Create cockroachDB directories
   file:
-      name: "{{ cockroach_db_path }}"
-      mode: 0755
+    name: "{{ item }}"
+    owner: cockroach
+    group: cockroach
+    mode: 0755
+  loop:
+    - "{{ cockroach_db_path }}
+    - "{{ cockroach_db_path }}/bin"
 
 - name: Download and extract the binary
   unarchive:
     src: "https://binaries.cockroachdb.com/cockroach-v{{ cockroach_db_version }}.linux-{{ cockroach_db_arch }}.tgz"
     dest: "{{ cockroach_db_path }}"
     remote_src: yes
-
-- name: Create the bin directory
-  file:
-      name: "{{ cockroach_db_path }}/bin"
-      state: directory
-      owner: cockroach
-      group: cockroach
-      mode: 0755
 
 - name: Copy the binary into the bin directory
   copy:
