@@ -24,7 +24,7 @@
 
 - name: Create the bin directory
   file:
-      name: {{ cockroach_db_path }}/bin
+      name: "{{ cockroach_db_path }}/bin"
       state: directory
       owner: cockroach
       group: cockroach
@@ -34,7 +34,7 @@
   copy:
       remote_src: yes
       src: "{{ cockroach_db_path }}/cockroach-v{{ cockroach_db_version }}.linux-{{ cockroach_db_arch }}/cockroach"
-      dest: {{ cockroach_db_path }}/bin/cockroach
+      dest: "{{ cockroach_db_path }}/bin/cockroach"
       owner: cockroach
       mode: 0755
 
