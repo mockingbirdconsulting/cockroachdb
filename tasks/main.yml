@@ -5,7 +5,7 @@
   user:
       name: cockroach
       create_home: yes
-      home: /opt/cockroach
+      home: {{ cockroach_db_path }}
 
 - name: Create the cockroach group
   group:
@@ -13,18 +13,18 @@
 
 - name: Reset the permissions on the home directory
   file:
-      name: /opt/cockroach
+      name: {{ cockroach_db_path }}
       mode: 0755
 
 - name: Download and extract the binary
   unarchive:
     src: "https://binaries.cockroachdb.com/cockroach-v{{ cockroach_db_version }}.linux-{{ cockroach_db_arch }}.tgz"
-    dest: /opt/cockroach
+    dest: {{ cockroach_db_path }}
     remote_src: yes
 
 - name: Create the bin directory
   file:
-      name: /opt/cockroach/bin
+      name: {{ cockroach_db_path }}/bin
       state: directory
       owner: cockroach
       group: cockroach
@@ -33,8 +33,8 @@
 - name: Copy the binary into the bin directory
   copy:
       remote_src: yes
-      src: "/opt/cockroach/cockroach-v{{ cockroach_db_version }}.linux-{{ cockroach_db_arch }}/cockroach"
-      dest: /opt/cockroach/bin/cockroach
+      src: "{{ cockroach_db_path }}/cockroach-v{{ cockroach_db_version }}.linux-{{ cockroach_db_arch }}/cockroach"
+      dest: {{ cockroach_db_path }}/bin/cockroach
       owner: cockroach
       mode: 0755
 
@@ -43,6 +43,8 @@
       src: cockroach.service
       dest: /etc/systemd/system/cockroach.service
       mode: 0664
+  notify:
+    - reload service
 
 - name: Ensure that the service is enabled and running
   systemd:

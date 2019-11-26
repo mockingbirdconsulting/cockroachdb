@@ -1,2 +1,6 @@
 ---
 # handlers file for cockroachdb
+  - name: reload service
+    systemd:
+      state: reloaded
+      daemon_reload: yes
