@@ -13,7 +13,8 @@
 
 - name: Create cockroachDB directories
   file:
-    name: "{{ item }}"
+    path: "{{ item }}"
+    state: directory
     owner: cockroach
     group: cockroach
     mode: 0755
