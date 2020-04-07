@@ -35,5 +35,12 @@ MIT
 Author Information
 ------------------
 
-Copyright Mockingbird Consulting Ltd.
+Wawrzyniec Niewodniczański
+Mockingbird Consulting Ltd.
+
+Copyright:
+- R3 Ltd
+https://www.r3.com
+- Mockingbird Consulting Ltd.
 https://www.mockingbirdconsulting.co.uk/
+
