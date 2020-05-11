@@ -1,6 +1,14 @@
 ---
 # defaults file for cockroachdb
-cockroach_db_path: /opt/cockroach
-cockroach_db_version: 2.1.4
-cockroach_db_arch: amd64
-cockroach_db_service_options: "--insecure --listen-addr=localhost"
+cockroachdb_arch: amd64
+cockroachdb_facts_refresh: false
+cockroachdb_inventory_group: cockroachdb
+cockroachdb_path: /opt/cockroach
+cockroachdb_path_ca_certs: "{{ cockroachdb_path }}/certs"
+cockroachdb_path_ca_safe: "{{ cockroachdb_path }}/safe"
+cockroachdb_path_local: "{{ playbook_dir }}/files"
+cockroachdb_secure: true
+# Look in vars/{secure,unsecure}.yml
+cockroach_db_service_options: ""
+cockroachdb_version: 2.1.4
+

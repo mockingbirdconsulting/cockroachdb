@@ -44,6 +44,15 @@
   notify:
     - reload service
 
+- block:
+  - import_taks: certs.yml
+  - import_vars: secure.yml
+  when: cockroachdb_secure
+
+- block:
+  - import_vars: unsecure.yml
+  when: not cockroachdb_secure
+
 - name: Ensure that the service is enabled and running
   systemd:
       name: cockroach
