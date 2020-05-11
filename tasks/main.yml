@@ -45,12 +45,12 @@
     - reload service
 
 - block:
-  - import_vars: secure.yml
+  - include_vars: secure.yml
   - import_tasks: certs.yml
   when: cockroachdb_secure
 
 - block:
-  - import_vars: unsecure.yml
+  - include_vars: unsecure.yml
   when: not cockroachdb_secure
 
 - name: Ensure that the service is enabled and running
