@@ -45,8 +45,8 @@
     - reload service
 
 - block:
-  - import_taks: certs.yml
   - import_vars: secure.yml
+  - import_tasks: certs.yml
   when: cockroachdb_secure
 
 - block:
