@@ -1,6 +1,8 @@
 ---
 # defaults file for cockroachdb
 cockroachdb_arch: amd64
+cockroachdb_facts_dir: /etc/ansible/facts.d
+cockroachdb_facts_file: "{{ cockroachdb_facts_dir }}/cockroachdb.fact"
 cockroachdb_facts_refresh: false
 cockroachdb_inventory_group: cockroachdb
 cockroachdb_path: /opt/cockroach

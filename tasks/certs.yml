@@ -4,12 +4,12 @@
     state: directory
     owner: root
     group: root
-    path: "{{ facts_dir }}"
+    path: "{{ cockrachdb_facts_dir }}"
     recurse: yes
 - name: Create file with the fact
   template:
     src: cockroachdb.fact.j2
-    dest: "{{ facts_file }}"
+    dest: "{{ cockroachdb_facts_file }}"
     owner: root
     group: root
     force: "{{ cockroachdb_facts_refresh }}"
