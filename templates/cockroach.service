@@ -6,8 +6,8 @@ After=network.target
 Type=simple
 # Another Type option: forking
 User=cockroach
-WorkingDirectory={{ cockroach_db_path }}
-ExecStart={{ cockroach_db_path }}/bin/cockroach start {{ cockroach_db_service_options }}
+WorkingDirectory={{ cockroachdb_path }}
+ExecStart={{ cockroachdb_path }}/bin/cockroach start {{ cockroachdb_service_options }}
 Restart=on-failure
 # Other Restart options: or always, on-abort, etc
 
