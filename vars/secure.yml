@@ -1,5 +1,5 @@
 ---
-cockroach_db_service_options: >
+cockroachdb_service_options: >
   --certs-dir={{ cockroachdb_path_ca_certs }}
   --advertise-addr={{ ansible_default_ipv4.address }}
   --join={% for host in groups[cockroachdb_inventory_group] %}

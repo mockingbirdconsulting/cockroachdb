@@ -9,6 +9,6 @@ cockroachdb_path_ca_safe: "{{ cockroachdb_path }}/safe"
 cockroachdb_path_local: "{{ playbook_dir }}/files"
 cockroachdb_secure: true
 # Look in vars/{secure,unsecure}.yml
-cockroach_db_service_options: ""
+cockroachdb_service_options: ""
 cockroachdb_version: 2.1.4
 
