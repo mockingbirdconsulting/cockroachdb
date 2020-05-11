@@ -110,7 +110,7 @@
   register: corda_key
 - name: Create corda certificate and key
   command: >
-    {{ cockorachdb_path }}/bin/cockroach cert create-client corda \
+    {{ cockroachdb_path }}/bin/cockroach cert create-client corda \
     --certs-dir {{ cockroachdb_path_ca_certs }} \
     --ca-key {{ cockroachdb_path_ca_safe }}/ca.key \
     --also-generate-pkcs8-key
