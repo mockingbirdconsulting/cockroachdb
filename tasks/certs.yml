@@ -60,7 +60,7 @@
   when: not ansible_local.cockroachdb.pki.ca|bool
 - name: Set the fact for CA
   lineinfile:
-    path: "{{ facts_file }}"
+    path: "{{ cockroachdb_facts_file }}"
     regexp: "^ca="
     line: "ca=yes"
   when: not ansible_local.cockroachdb.pki.ca|bool
@@ -82,7 +82,7 @@
   when: not node_key.stat.exists|bool
 - name: Set the fact for node key
   lineinfile:
-    path: "{{ facts_file }}"
+    path: "{{ cockroachdb_facts_file }}"
     regexp: "^client="
     line: "client=yes"
   when: not ansible_local.cockroachdb.pki.node|bool
@@ -100,7 +100,7 @@
   when: not client_key.stat.exists|bool
 - name: Set the fact for node key
   lineinfile:
-    path: "{{ facts_file }}"
+    path: "{{ cockroachdb_facts_file }}"
     regexp: "^client="
     line: "client=yes"
   when: not ansible_local.cockroachdb.pki.client|bool
@@ -119,7 +119,7 @@
   when: not corda_key.stat.exists|bool
 - name: Set the fact for corda key
   lineinfile:
-    path: "{{ facts_file }}"
+    path: "{{ cockroachdb_facts_file }}"
     regexp: "^corda="
     line: "corda=yes"
   when: not ansible_local.cockroachdb.pki.corda|bool
