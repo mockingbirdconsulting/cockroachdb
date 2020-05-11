@@ -4,7 +4,7 @@
     state: directory
     owner: root
     group: root
-    path: "{{ cockrachdb_facts_dir }}"
+    path: "{{ cockroachdb_facts_dir }}"
     recurse: yes
 - name: Create file with the fact
   template:
