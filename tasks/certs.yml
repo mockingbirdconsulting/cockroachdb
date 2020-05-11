@@ -33,7 +33,7 @@
     register: ca_key
   - name: Create CA key and cert
     command: >
-      /opt/corda/cockroach/bin/cockroach cert create-ca \
+      {{ cockroachdb_path }}/bin/cockroach cert create-ca \
       --certs-dir {{ cockroachdb_path_ca_certs }} \
       --ca-key {{ cockroachdb_path_ca_safe }}/ca.key
     when: not ca_key.stat.exists|bool
@@ -70,7 +70,7 @@
   register: node_key
 - name: Create node keys and certs
   command: >
-    /opt/corda/cockroach/bin/cockroach cert create-node \
+    {{ cockroachdb_path }}/bin/cockroach cert create-node \
     {{ ansible_default_ipv4.address }} \
     {{ ansible_hostname }} \
     localhost \
@@ -92,7 +92,7 @@
   register: client_key
 - name: Create client certificate and key
   command: >
-    /opt/corda/cockroach/bin/cockroach cert create-client root \
+    {{ cockroachdb_path }}/bin/cockroach cert create-client root \
     --certs-dir {{ cockroachdb_path_ca_certs }} \
     --ca-key {{ cockroachdb_path_ca_safe }}/ca.key
   become: true
@@ -110,7 +110,7 @@
   register: corda_key
 - name: Create corda certificate and key
   command: >
-    /opt/corda/cockroach/bin/cockroach cert create-client corda \
+    {{ cockorachdb_path }}/bin/cockroach cert create-client corda \
     --certs-dir {{ cockroachdb_path_ca_certs }} \
     --ca-key {{ cockroachdb_path_ca_safe }}/ca.key \
     --also-generate-pkcs8-key
@@ -129,7 +129,7 @@
     mode: "0644"
 - name: Initilize CockroachDB
   command: >
-    /opt/corda/cockroach/bin/cockroach init \
+    {{ cockroachdb_path }}/bin/cockroach init \
     --certs-dir {{ cockroachdb_path_ca_certs }}
 - name: Restart CockroachDB
   systemd:
