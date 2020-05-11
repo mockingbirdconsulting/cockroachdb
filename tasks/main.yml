@@ -19,20 +19,20 @@
     group: cockroach
     mode: 0755
   loop:
-    - "{{ cockroach_db_path }}"
-    - "{{ cockroach_db_path }}/bin"
+    - "{{ cockroachdb_path }}"
+    - "{{ cockroachdb_path }}/bin"
 
 - name: Download and extract the binary
   unarchive:
-    src: "https://binaries.cockroachdb.com/cockroach-v{{ cockroach_db_version }}.linux-{{ cockroach_db_arch }}.tgz"
-    dest: "{{ cockroach_db_path }}"
+    src: "https://binaries.cockroachdb.com/cockroach-v{{ cockroachdb_version }}.linux-{{ cockroachdb_arch }}.tgz"
+    dest: "{{ cockroachdb_path }}"
     remote_src: yes
 
 - name: Copy the binary into the bin directory
   copy:
       remote_src: yes
-      src: "{{ cockroach_db_path }}/cockroach-v{{ cockroach_db_version }}.linux-{{ cockroach_db_arch }}/cockroach"
-      dest: "{{ cockroach_db_path }}/bin/cockroach"
+      src: "{{ cockroachdb_path }}/cockroach-v{{ cockroachdb_version }}.linux-{{ cockroachdb_arch }}/cockroach"
+      dest: "{{ cockroachdb_path }}/bin/cockroach"
       owner: cockroach
       mode: 0755
 
