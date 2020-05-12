@@ -136,7 +136,8 @@
 - name: Initilize CockroachDB
   command: >
     {{ cockroachdb_path }}/bin/cockroach init \
-    --certs-dir {{ cockroachdb_path_ca_certs }} --host=localhost
+    --certs-dir {{ cockroachdb_path_ca_certs }} \
+    --host=localhost
   run_once: true
   notify:
     - restart CockrachDB
