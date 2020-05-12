@@ -98,7 +98,7 @@
   become: true
   become_user: cockroach
   when: not client_key.stat.exists|bool
-- name: Set the fact for node key
+- name: Set the fact for client key
   lineinfile:
     path: "{{ cockroachdb_facts_file }}"
     regexp: "^client="
@@ -117,7 +117,7 @@
   become: true
   become_user: cockroach
   when: not corda_key.stat.exists|bool
-- name: Set the fact for corda key
+- name: Set the fact for Corda key
   lineinfile:
     path: "{{ cockroachdb_facts_file }}"
     regexp: "^corda="
@@ -127,11 +127,15 @@
   file:
     path: "{{ cockroachdb_path_ca_certs }}/client.corda.key.pk8"
     mode: "0644"
+- name: Start CockrachDB
+  systemd:
+    name: cockroach
+    state: restarted
+    enabled: true
+    daemon_reload: true
 - name: Initilize CockroachDB
   command: >
     {{ cockroachdb_path }}/bin/cockroach init \
     --certs-dir {{ cockroachdb_path_ca_certs }}
-- name: Restart CockroachDB
-  systemd:
-    name: cockroach
-    state: restarted
+  notify:
+    - restart CockrachDB

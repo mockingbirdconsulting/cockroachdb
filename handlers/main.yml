@@ -3,5 +3,6 @@
   - name: reload service
     systemd:
       name: cockroach
-      state: reloaded
+      state: restarted
       daemon_reload: yes
+      enabled: true
