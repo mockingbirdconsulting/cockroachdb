@@ -1,8 +1,7 @@
 ---
-# handlers file for cockroachdb
-  - name: reload service
-    systemd:
-      name: cockroach
-      state: restarted
-      daemon_reload: yes
-      enabled: true
+- name: restart CockroachDB
+  systemd:
+    name: cockroach
+    state: restarted
+    daemon_reload: yes
+    enabled: true

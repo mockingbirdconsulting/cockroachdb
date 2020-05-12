@@ -42,20 +42,9 @@
       dest: /etc/systemd/system/cockroach.service
       mode: 0664
   notify:
-    - reload service
+    - restart CockroachDB
 
 - block:
-  - include_vars: secure.yml
   - import_tasks: certs.yml
   when: cockroachdb_secure
 
-- block:
-  - include_vars: unsecure.yml
-  when: not cockroachdb_secure
-
-- name: Ensure that the service is enabled and running
-  systemd:
-      name: cockroach
-      state: started
-      daemon_reload: yes
-      enabled: yes

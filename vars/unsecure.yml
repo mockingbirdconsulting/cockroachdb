@@ -1,4 +1,0 @@
----
-# vars file for cockroachdb
-#
-cockroachdb_service_options: "--insecure --listen-addr=localhost"

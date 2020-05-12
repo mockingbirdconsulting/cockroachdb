@@ -140,4 +140,4 @@
     --host=localhost
   run_once: true
   notify:
-    - restart CockrachDB
+    - restart CockroachDB
