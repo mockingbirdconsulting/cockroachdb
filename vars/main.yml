@@ -1,2 +1,11 @@
 ---
-# vars file for cockroachdb
+cockroachdb_service_options: "{{ cockroachdb_secure | ternary(
+'--certs-dir={{ cockroachdb_path_ca_certs }} \
+ --advertise-addr={{ ansible_default_ipv4.address }} \
+ --join={% for host in groups[cockroachdb_inventory_group] %} \
+  {{ hostvars[host]['ansible_default_ipv4']['address'] }} \
+  {% if not loop.last %},{% endif %}{% endfor %} \
+  --cache=.25 \
+  --max-sql-memory=.25 ',
+  '--insecure --listen-addr=localhost')
+  }}"
